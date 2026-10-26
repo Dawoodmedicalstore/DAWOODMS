@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dawood Medical Store - Mingora Swat</title>
+    <style>
+        /* CSS Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        :root {
+            --primary: #00a86b;
+            --primary-dark: #008754;
+            --secondary: #1a202c;
+            --light-bg: #f7fafc;
+            --white: #ffffff;
+            --whatsapp-green: #25d366;
+            --text-muted: #718096;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--secondary);
+            line-height: 1.6;
+        }
+
+        /* Header / Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #eefaf4 0%, #dbf3e7 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 2rem;
+        }
+
+        /* Smart Search Portal */
+        .search-box {
+            background: var(--white);
+            padding: 0.5rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            outline: none;
+            border-radius: 50px;
+        }
+        .search-box button {
+            background-color: var(--whatsapp-green);
+            color: var(--white);
+            border: none;
+            padding: 0 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .search-box button:hover {
+            background-color: #20ba5a;
+        }
+
+        /* Business Overview Section */
+        .info-section {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .info-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border-top: 4px solid var(--primary);
+        }
+        .info-card h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        .info-card p {
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+        }
+        .phone-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Always In Stock Showcase */
+        .stock-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        .stock-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .stock-section h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--primary);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .product-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            text-align: center;
+            padding: 2rem;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .product-card h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        .product-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        .order-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .order-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: #a0aec0;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Modifications */
+        @media (max-width: 600px) {
+            .search-box {
+                flex-direction: column;
+                border-radius: 15px;
+                padding: 1rem;
+                gap: 1rem;
+            }
+            .search-box input {
+                padding: 0.8rem;
+                text-align: center;
+            }
+            .search-box button {
+                padding: 0.8rem;
+                justify-content: center;
+            }
+            .nav-links {
+                display: none; /* Simplifies mobile view */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                🟢 Dawood Medical Store
+            </div>
+            <nav class="nav-links">
+                <a href="#search-portal">Check Availability</a>
+                <a href="#always-in-stock">Guaranteed Inventory</a>
+                <a href="#contact-info">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero & Search Portal Section -->
+    <section class="hero" id="search-portal">
+        <div class="hero-container">
+            <h1>Need Medicine in Mingora?</h1>
+            <p>Type any medicine, surgical tool, or baby product below. It will send a WhatsApp directly to Dawood Hussain to instantly check our live shelf availability for you!</p>
+            
+            <div class="search-box">
+                <input type="text" id="medicineInput" placeholder="Enter medicine name (e.g. Panadol, Insulin, Infant Formula)...">
+                <button onclick="sendWhatsAppInquiry()">
+                    🔍 Check Availability
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Contacts Overview -->
+    <section class="info-section" id="contact-info">
+        <div class="info-card">
+            <h3>📍 Our Location</h3>
+            <p>Haji Baba Road, Bacha Sahib Cham,</p>
+            <p>Mingora, Swat, 19130</p>
+        </div>
+        <div class="info-card">
+            <h3>📞 Direct Contact</h3>
+            <p><strong>Dawood Hussain:</strong> <a href="tel:+923438409889" class="phone-link">+92 343 8409889</a></p>
+            <p>Alternate Line 1: +92 336 9468180</p>
+            <p>Alternate Line 2: +92 341 1940641</p>
+        </div>
+        <div class="info-card">
+            <h3>⏰ Store Timing</h3>
+            <p><strong>In-Store:</strong> 8:00 AM – 1:00 AM (Mon - Sun)</p>
+            <p><strong>Home Delivery:</strong> 9:00 AM – 5:00 PM</p>
+            <p>*(Sunday Delivery extends to 6:30 PM)*</p>
+        </div>
+    </section>
+
+    <!-- Always In Stock Showcase -->
+    <section class="stock-section" id="always-in-stock">
+        <h2>Always In Stock</h2>
+        <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem;">We keep these essential healthcare lines continuously updated and available.</p>
+        
+        <div class="grid">
+            <!-- Item 1: Vaccines -->
+            <div class="product-card">
+                <div class="product-icon">💉</div>
+                <h4>Human Vaccines</h4>
+                <p>Influenza (Flu), Rabies, Hepatitis, and clinical essential vaccines.</p>
+                <a href="javascript:void(0)" onclick="orderSpecificItem('Human Vaccines')" class="order-btn">Inquire Now</a>
+            </div>
+
+            <!-- Item 2: Baby Care Products -->
+            <div class="product-card">
+                <div class="product-icon">🍼</div>
+                <h4>Baby & Child Care</h4>
